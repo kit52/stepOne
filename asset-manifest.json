@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/stepOne/static/css/main.712c3584.chunk.css",
+    "main.js": "/stepOne/static/js/main.b98e882c.chunk.js",
+    "main.js.map": "/stepOne/static/js/main.b98e882c.chunk.js.map",
+    "runtime-main.js": "/stepOne/static/js/runtime-main.8b6f36fb.js",
+    "runtime-main.js.map": "/stepOne/static/js/runtime-main.8b6f36fb.js.map",
+    "static/js/2.5ddaaafb.chunk.js": "/stepOne/static/js/2.5ddaaafb.chunk.js",
+    "static/js/2.5ddaaafb.chunk.js.map": "/stepOne/static/js/2.5ddaaafb.chunk.js.map",
+    "index.html": "/stepOne/index.html",
+    "static/css/main.712c3584.chunk.css.map": "/stepOne/static/css/main.712c3584.chunk.css.map",
+    "static/js/2.5ddaaafb.chunk.js.LICENSE.txt": "/stepOne/static/js/2.5ddaaafb.chunk.js.LICENSE.txt",
+    "static/media/logo.2d27ead7.svg": "/stepOne/static/media/logo.2d27ead7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8b6f36fb.js",
+    "static/js/2.5ddaaafb.chunk.js",
+    "static/css/main.712c3584.chunk.css",
+    "static/js/main.b98e882c.chunk.js"
+  ]
+}
