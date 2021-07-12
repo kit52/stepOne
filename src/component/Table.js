@@ -2,7 +2,6 @@ import * as React from 'react';
 import s from "./Table.module.css"
 import Input from './Input';
 const Table = (props) => {
-    console.log(props);
     let arr2 = [];
     props.users.map(item => {
         let arr = [];

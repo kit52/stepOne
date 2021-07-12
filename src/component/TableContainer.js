@@ -22,7 +22,6 @@ const TableContainer = (props) => {
                 }
             })
             )
-            console.log(records);
         }).catch(e => console.log(e))
     }
 
@@ -43,7 +42,6 @@ const TableContainer = (props) => {
                 _id: id, data: { ...record.data, [name]: data }
             }
             setEditRecord([...recordsEdit, obj])
-            console.log(recordsEdit);
         }
     }
 
@@ -57,7 +55,6 @@ const TableContainer = (props) => {
 
     const putRecords = (e) => {
         if (e.target["FirstName"].value.trim().length > 0 || e.target["LastName"].value.trim().length > 0 || e.target["Phone"].value.trim().length > 0 || e.target["Age"].value.trim().length > 0) {
-            console.log(e.target["FirstName"].value.trim().length);
             let data = {
                 "firstName": `${e.target["FirstName"].value}`,
                 "lastName": `${e.target["LastName"].value}`,
@@ -67,7 +64,6 @@ const TableContainer = (props) => {
             Api.put(data).then((res) => {
                 let id = res.data._id;
                 Api.getOne(id).then(res => setRecord([...records, res]))
-                console.log(records);
             })
         } else {
             alert("Поля ввода не должны быть пусты")
