@@ -1,0 +1,36 @@
+.table{
+    color: black;
+    display: flex;
+
+}
+.table_container{
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+}
+form > input{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+form{
+    margin-top: 20px;
+}
+.table_btns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+   
+}
+.table_btns > button {
+    margin-bottom: 2px;
+}
+.table_content{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 20px;
+    flex-direction: column;
+    
+}
+.table_content > button{
+    width: fit-content;
+}
