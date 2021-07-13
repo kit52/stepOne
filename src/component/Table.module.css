@@ -1,39 +1,94 @@
-.table{
-    color: black;
-    display: flex;
 
-}
 table{
     min-width: 100%;
 }
 .table_container{
     display: flex;
     flex-direction: column;
-    max-width: 900px;
+    min-width: 900px;
 }
 form > input{
     margin-right: 10px;
     margin-bottom: 10px;
 }
 form{
+
     margin-top: 20px;
 }
 .table_btns{
     display: flex;
     flex-direction: column;
-    margin-top: 18px;
+    margin-top: 36px;
    
 }
 .table_btns > button {
     margin-bottom: 2px;
 }
 .table_content{
+    padding: 20px;
     display: flex;
-    padding-top: 20px;
-    padding-left: 20px;
-    flex-direction: column;
-    
+    width: 100%;
 }
 .table_content > button{
     width: fit-content;
+}
+tbody{
+    min-width: 100%;
+}
+.form_btn{
+    display: flex;
+    justify-content: center;
+}
+table td{
+    min-width: 170px;
+}
+.table_formInput{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    
+}
+.table_formInput > input{
+    width: 24%;
+}
+
+.table {
+	width: 80%;
+	border: none;
+	margin-bottom: 20px;
+ 
+}
+.table thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #d8d8d8;
+	font-size: 14px;
+}
+.table thead tr th:first-child {
+	border-radius: 8px 0 0 8px;
+}
+.table thead tr th:last-child {
+	border-radius: 0 8px 8px 0;
+}
+.table tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+.table tbody tr:nth-child(even){
+	background: #f3f3f3;
+}
+.table tbody tr td:first-child {
+	border-radius: 8px 0 0 8px;
+}
+.table tbody tr td:last-child {
+	border-radius: 0 8px 8px 0;
+}
+button{
+    padding: 9px;
+    margin: 0 10px;
 }

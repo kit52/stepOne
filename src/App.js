@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import TableContainer from "./component/TableContainer";
 
 class App extends Component {
-
   render() {
-
     return (
       <div className="App">
         <TableContainer />

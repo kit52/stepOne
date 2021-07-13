@@ -28,7 +28,6 @@ const Table = (props) => {
 
     let arrButtonsDelete = [];
     props.users.forEach(item => {
-
         arrButtonsDelete.push(<button onClick={() => props.deleteRecord(item._id)}>Delete</button>)
     })
     let arrButtonsEdit = [];
@@ -42,11 +41,10 @@ const Table = (props) => {
         />)
     })
 
-
     return (
-        <div className={s.table}>
+        <div className={s.table_content}>
             <div className={s.table_container}>
-                <table>
+                <table className={s.table}>
                     <thead><tr><th>First Name</th><th>Last Name</th><th>Phone</th><th>Age</th></tr></thead>
                     <tbody> {arr2}</tbody>
                 </table>
@@ -54,11 +52,14 @@ const Table = (props) => {
                     e.preventDefault();
                     props.putRecords(e)
                 }}>
-                    <input name="FirstName" id="1" placeholder='Enter first name' />
-                    <input name="LastName" placeholder='Enter last name' />
-                    <input name="Phone" placeholder='Enter your phone' />
-                    <input name="Age" placeholder='Enter age' />
-                    <div><button>Add Records</button></div>
+                    <div className={s.table_formInput}>
+                        <input name="FirstName" id="1" placeholder='Enter first name' />
+                        <input name="LastName" placeholder='Enter last name' />
+                        <input name="Phone" placeholder='Enter your phone' />
+                        <input name="Age" placeholder='Enter age' />
+                    </div>
+
+                    <div className={s.form_btn}><button>Add Records</button></div>
                 </form>
             </div>
             <div className={s.table_btns}>{arrButtonsDelete}</div>
@@ -66,7 +67,6 @@ const Table = (props) => {
         </div>
     )
 }
-
 
 
 export default Table;

@@ -1,6 +1,5 @@
 import React from "react";
 const EditButtons = (props) => {
-    console.log(props);
     return (
         props.Edit != props.id
             ? <button onClick={() => props.setEditMode(props.id)}>Edit</button>
