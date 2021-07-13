@@ -10,7 +10,6 @@ const Table = (props) => {
                 <td key={`${item._id}` + Math.floor(Math.random() * 10000000000000)}>
                     {item.data[i]}
                 </td>
-
             )
         }
         arr2.push(

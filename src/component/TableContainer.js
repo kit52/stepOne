@@ -3,16 +3,25 @@ import Table from "./Table";
 import s from "./Table.module.css"
 import Api from "./axios-instance";
 import { useState, useEffect } from 'react';
-const TableContainer = (props) => {
+const TableContainer = () => {
     const [records, setRecord] = useState([]);
+    const [recordsEdit, setEditRecord] = useState([]);
+    const [Edit, setEditMode] = useState(false);
+    useEffect(() => {
+        if (records.length < 1) {
+            getRecords();
+        }
+    });
+
     const getRecords = () => {
         Api.get().then((res) => {
             setRecord([...records, ...res.data])
         })
     }
+
     const updateRecords = (id, data) => {
         debugger
-        Api.update(id, data).then((res) => {
+        Api.update(id, data).then(() => {
             setEditMode(false)
             setRecord(records.map((item, i) => {
                 if (item._id == data._id) {
@@ -25,7 +34,6 @@ const TableContainer = (props) => {
         }).catch(e => console.log(e))
     }
 
-    const [recordsEdit, setEditRecord] = useState([]);
     const toCollectEditRecords = (name, id, data, record) => {
         if (recordsEdit.length > 0) {
             recordsEdit.map((item) => {
@@ -44,13 +52,6 @@ const TableContainer = (props) => {
             setEditRecord([...recordsEdit, obj])
         }
     }
-
-    useEffect(() => {
-        if (records.length < 1) {
-            getRecords();
-        }
-    });
-
 
 
     const putRecords = (e) => {
@@ -71,12 +72,10 @@ const TableContainer = (props) => {
     }
 
     const deleteRecord = (id) => {
-        Api.delete(id).then((res) => {
+        Api.delete(id).then(() => {
             setRecord([...records.filter((item) => !item._id == id)])
         })
     }
-
-    const [Edit, setEditMode] = useState(false);
 
     return <div className={s.table_content}>
         {!Edit
