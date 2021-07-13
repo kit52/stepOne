@@ -1,7 +1,11 @@
 import * as React from 'react';
 import s from "./Table.module.css"
-import Input from './Input';
+import Inputs from './Inputs';
+import EditButtons from './EditButtons';
+import { useState } from 'react';
 const Table = (props) => {
+
+    const [Edit, setEditMode] = useState("");
     let arr2 = [];
     props.users.map(item => {
         let arr = [];
@@ -12,37 +16,40 @@ const Table = (props) => {
                 </td>
             )
         }
-        arr2.push(
-            <tr key={`${item._id}` + item.data.firstName + item.data.lastName}>
+
+        arr2.push(Edit == item._id ?
+            <Inputs item={item} toCollectEditRecords={props.toCollectEditRecords} />
+            : <tr key={`${item._id}` + item.data.firstName + item.data.lastName}>
                 {arr}
             </tr>
         )
     })
 
 
-    let arrButtons = [];
+    let arrButtonsDelete = [];
+    props.users.forEach(item => {
+
+        arrButtonsDelete.push(<button onClick={() => props.deleteRecord(item._id)}>Delete</button>)
+    })
+    let arrButtonsEdit = [];
     props.users.map(item => {
-        arrButtons.push(<button onClick={() => props.deleteRecord(item._id)}>Delete</button>)
+        arrButtonsEdit.push(<EditButtons recordsEdit={props.recordsEdit}
+            Edit={Edit}
+            setEditMode={setEditMode}
+            item={item}
+            id={item._id}
+            updateRecords={props.updateRecords}
+        />)
     })
 
-
-    let arrInputs = [];
-    props.users.map(item => {
-        let arr = [];
-        for (let i in item.data) {
-            arr.push(<Input name={i} id={item._id} data={item.data[i]} item={item} toCollectEditRecords={props.toCollectEditRecords} />)
-        }
-        arrInputs.push(<div>{arr}</div>)
-    })
 
     return (
         <div className={s.table}>
             <div className={s.table_container}>
                 <table>
                     <thead><tr><th>First Name</th><th>Last Name</th><th>Phone</th><th>Age</th></tr></thead>
-                    <tbody>{!props.Edit ? arr2 : null}</tbody>
+                    <tbody> {arr2}</tbody>
                 </table>
-                {props.Edit ? <div>{arrInputs}</div> : null}
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     props.putRecords(e)
@@ -54,7 +61,8 @@ const Table = (props) => {
                     <div><button>Add Records</button></div>
                 </form>
             </div>
-            <div className={s.table_btns}>{arrButtons}</div>
+            <div className={s.table_btns}>{arrButtonsDelete}</div>
+            <div className={s.table_btns}>{arrButtonsEdit}</div>
         </div>
     )
 }

@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 const TableContainer = () => {
     const [records, setRecord] = useState([]);
     const [recordsEdit, setEditRecord] = useState([]);
-    const [Edit, setEditMode] = useState(false);
+
     useEffect(() => {
         if (records.length < 1) {
             getRecords();
@@ -22,7 +22,6 @@ const TableContainer = () => {
     const updateRecords = (id, data) => {
         debugger
         Api.update(id, data).then(() => {
-            setEditMode(false)
             setRecord(records.map((item, i) => {
                 if (item._id == data._id) {
                     return { ...item, ...data }
@@ -31,10 +30,14 @@ const TableContainer = () => {
                 }
             })
             )
-        }).catch(e => console.log(e))
+        }).then(() => setEditRecord([])).catch(e => console.log(e))
     }
 
     const toCollectEditRecords = (name, id, data, record) => {
+        console.log(name);
+        console.log(id);
+        console.log(data);
+        console.log(record);
         if (recordsEdit.length > 0) {
             recordsEdit.map((item) => {
                 debugger
@@ -62,6 +65,7 @@ const TableContainer = () => {
                 "phone": `${e.target["Phone"].value}`,
                 "age": `${e.target["Age"].value}`
             }
+
             Api.put(data).then((res) => {
                 let id = res.data._id;
                 Api.getOne(id).then(res => setRecord([...records, res]))
@@ -78,22 +82,17 @@ const TableContainer = () => {
     }
 
     return <div className={s.table_content}>
-        {!Edit
-            ? <button onClick={() => setEditMode(true)}>Edit</button>
-            : <button onClick={() => {
-
-                (recordsEdit.length > 0 ?
-                    recordsEdit.map(item => {
-                        updateRecords(item._id, item)
-                    }) : setEditMode(false))
-            }}>Save</button>}
         <Table
-            Edit={Edit}
+
             toCollectEditRecords={toCollectEditRecords}
             deleteRecord={deleteRecord}
             getRecords={getRecords}
             putRecords={putRecords}
-            users={records} />
+            updateRecords={updateRecords}
+            users={records}
+            recordsEdit={recordsEdit}
+        />
+
     </div>
 
 }
